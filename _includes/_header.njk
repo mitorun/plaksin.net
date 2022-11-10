@@ -1,0 +1,34 @@
+<header class="header container">
+
+	<a class="header-brand" href="/" aria-current="page">Артём Плаксин</a>
+
+	<p class="header-text">Специалист по доступности и социальный деятель</p>
+
+	<div class="header-contacts">
+		<a class="header-link" href="tel:{{ _site.siteTel }}">{{ _site.siteTelVisible }}</a>
+
+		<a class="header-link" href="mailto:{{ _site.siteEmail }}">{{ _site.siteEmail }}</a>
+	</div>
+
+	<nav class="header-nav">
+		<ul class="menu">
+
+			{% for item in _menu.items %}
+				{% if item.url == page.url %}
+					{% set current = 'aria-current="page"' %}
+					{% else %}
+					{% set current = '' %}
+				{% endif %}
+			<li>
+				<a class="menu-link" href="{{ item.url }}" {{ current | safe }}>{{- item.text -}}</a>
+			</li>
+			{% endfor %}
+
+			<!--<li><a class="menu-link" href="/">Главная</a></li>
+			<li><a class="menu-link" href="/services/">Услуги</a></li>
+			<li><a class="menu-link" href="/blog/">Блог</a></li>
+			<li><a class="menu-link" href="/microblog/">Микроблог</a></li>-->
+		</ul>
+	</nav>
+
+</header>

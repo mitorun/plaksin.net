@@ -1,0 +1,54 @@
+<!doctype html><!-- Сайт https://plaksin.net/ -->
+<html lang="ru">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta charset="utf-8"/>
+	<title>{{ title if page.url == '/' else title + _site.titleBrand }}</title>
+	<meta name="description" content="{{ description }}"/>
+	{#<link rel="stylesheet" href="/styles.css"/>#}
+	<link rel="icon" type="image/svg+xml" sizes="any" href="/img/favicon.svg"/>
+	<link rel="preload" as="image" href="/img/sprite.svg">
+	<link rel="preload" as="image" href="/img/plaksin-1.jpg">
+	<meta name="generator" content="Eleventy">
+	<!--<meta property="og:type" content="website">
+	<meta property="og:title" content="Артём Плаксин">
+	<meta property="og:description" content="Специалист по невизуальной доступности и социальный деятель.">
+	<meta property="og:site_name" content="Артём Плаксин">
+	<meta property="og:locale" content="ru">
+	<meta property="og:image" content="https://plaksin.net/img/og.png">
+	<meta property="og:url" content="https://plaksin.net/">
+	<link rel="canonical" href="https://plaksin.net/">-->
+
+	<!-- Вставка инлайн CSS переменными Nunjucks: -->
+	{% set css %}
+		{% include "styles.css" %}
+	{% endset %}
+	<style>
+		{{ css | safe }}
+	</style>
+</head>
+<body>
+
+
+	{% include "_header.njk" %}
+
+
+	<main class="main">
+
+		{% block content %}
+			{{ content | safe }}
+		{% endblock %}
+
+	</main>
+
+
+
+	{% include "_footer.njk" %}
+
+
+	<!--<script defer src="bootstrap.min.js"></script>-->
+	<noscript>У вас в браузере отключён JavaScript</noscript>
+
+
+</body>
+</html>
