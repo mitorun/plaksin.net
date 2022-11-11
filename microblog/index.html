@@ -1,0 +1,44 @@
+---
+title: Микроблог
+description: Блог в виде ленты сообщений.
+layout: _page-base.njk
+---
+
+<!--Первый экран:-->
+<section class="container">
+	<h1>Микроблог</h1>
+
+
+	<!--<article class="micropost">
+		<p>Это первое сообщение в новом блоге.</p>
+		<p>А это еще один параграф.</p>
+		<time datetime="2022-11-06">6 ноября 2022</time>
+	</article>
+
+
+	{% for item in _microblog.items %}
+	<article class="micropost">
+		<p>{{ item.text }}</p>
+		<time datetime="{{ item.date }}">{{ item.date }}</time>
+	</article>
+	{% endfor %}-->
+
+
+	<!--{% for item in collections.microblog %}
+	<div class="micropost">
+		{{ content | safe }}
+	</div>
+	{% endfor %}-->
+
+
+	<ol class="microblog">
+		{% for microblog in collections.microblog | reverse %}
+		<li class="microblog-card">
+			<p class="microblog-card-text">{{ microblog.data.text }}</p>
+			<time class="microblog-card-date" datetime="{{ microblog.data.date }}">{{ microblog.data.date }}</time>
+		</li>
+		{% endfor %}
+	</ol>
+
+
+</section>
