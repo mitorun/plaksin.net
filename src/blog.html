@@ -1,0 +1,27 @@
+---
+title: 'Статьи'
+description: 'Мои статьи по доступности, вебу и по жизни.'
+layout: _page-base.njk
+---
+
+<!--Первый экран:-->
+<section class="container">
+	<h1>Статьи</h1>
+
+
+	<ol class="blog">
+		{% for blog in collections.blog | reverse %}
+		<li class="blog__card">
+			<h2 class="blog__title h3">
+				<a class="stretch" href="{{ blog.url | url }}">
+					{{ blog.data.title }}
+				</a>
+			</h2>
+			<p class="blog__summary">{{ blog.data.description }}</p>
+			<!--<img class="blog__img" height="80" width="120" src="/img/blog/{{ blog.fileSlug }}/cover.png" alt="Обложка поста {{ blog.data.title }}">-->
+			<time class="blog__date" datetime="{{ blog.data.date.toISOString() }}">{{ blog.data.date | dateRus }}</time>
+		</li>
+		{% endfor %}
+	</ol>
+
+</section>

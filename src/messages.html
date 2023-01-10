@@ -1,0 +1,26 @@
+---
+title: 'Сообщения'
+description: 'Лента коротких сообщений.'
+layout: _page-base.njk
+eleventyExcludeFromCollections: true
+---
+
+<meta name="robots" content="noindex, nofollow" data-helmet>
+
+<!--Первый экран:-->
+<section class="container">
+
+	<h1>Сообщения</h1>
+
+	<p>Страница в разработке...</p>
+
+	<!--<ol class="messages">
+		{% for messages in collections.messages | reverse %}
+		<li class="messages">
+			{{ micropost.templateContent | safe }}
+			<time class="messages__date" datetime="{{ messages.date.toISOString().slice(0, 10) }}">{{ messages.date | dateRus }}</time>
+		</li>
+		{% endfor %}
+	</ol>-->
+
+</section>

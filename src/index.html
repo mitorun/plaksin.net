@@ -1,0 +1,170 @@
+---
+title: Артём Плаксин
+description: Специалист по невизуальной доступности и социальный деятель.
+layout: _page-base.njk
+---
+
+<!--Первый экран:-->
+<section class="container pt-m">
+	<div class="hero">
+		<h1 class="icon-flash">Артём Плаксин</h1>
+
+		<p>Незрячий специалист в сфере невизуальной доступности, социальный деятель, блогер, web-мастер и просто хороший человек.</p>
+
+		<p>Занимаюсь тестированием невизуальной доступности сайтов и мобильных приложений – для скринридеров и с клавиатуры. Изучаю другие области веб-разработки и веду блог.</p>
+
+
+		<div class="hero__img">
+			{% image "./src/img/plaksin-1.jpeg", "Артём глядит задумчиво в даль" %}
+		</div>
+
+		<!--<picture>
+			<source type="image/avif" srcset="/img/plaksin-1.avif">
+			<img width="540" height="360" src="/img/plaksin-1.jpg" alt="Артём глядит задумчиво в даль">
+		</picture>-->
+	</div>
+
+
+	<ul class="links links--fs mb-l">
+		<li><a class="links__card icon-book" rel="noopener" target="_blank" href="https://maniyax.me/">Блог</a></li>
+
+		<li><a class="links__card icon-youtube" rel="noopener" target="_blank" href="https://www.youtube.com/maniyax">YouTube-канал</a></li>
+
+		<li><a class="links__card icon-glass" rel="noopener" target="_blank" href="https://evland.ru/komanda/artem-plaksin/">Everland</a></li>
+	</ul>
+</section>
+
+
+
+
+<!--Обо мне:-->
+<section class="container">
+	<h2 class="h1">Обо мне</h2>
+
+	<div class="about">
+		<p>Меня зовут Артём Плаксин, в сети известен также под никами «maniyax» и «coress». Являюсь незрячим аналитиком невизуальной доступности и социальным деятелем.</p>
+
+		<p>Веду небольшой блог, создаю полезные некоммерческие проекты для развития интернета для слепых и помогаю крупному бизнесу стать доступнее для клиентов с инвалидностью.</p>
+
+		<div class="about__img">
+			{% image "./src/img/plaksin-2.jpeg", "Артём сидит на диване-облаке" %}
+		</div>
+		<!--<picture>
+			<source type="image/avif" srcset="/img/plaksin-2.avif">
+			<img width="540" height="360" src="/img/plaksin-2.jpg" alt="Артём сидит на диване-облаке">
+		</picture>-->
+	</div>
+
+	<!--<div class="youtube-grid">
+			<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/8MgJs7TwmMs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+			<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/htLMaeusX8M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>-->
+
+
+
+
+	<h3 class="h1">Работа</h3>
+
+	<ul class="work-list mb-l">
+		<li class="icon-user">Руководитель отдела accessibility-тестирования <a rel="noopener" target="_blank" href="https://evland.ru">"Everland"</a></li>
+
+		<li class="icon-eye">Ведущий семинаров о невизуальной доступности</li>
+
+		<li class="icon-teacher">Спикер различных конференций</li>
+	</ul>
+
+
+
+
+	<h3 class="h1">Некоммерческая деятельность</h3>
+
+	<ul class="activity">
+		<li class="activity__card logo-tiflo">
+			<p>Организатор экосистемы проектов <a target="_blank" rel="noopener" href="https://tiflohost.ru">"Tiflo Host"</a></p>
+		</li>
+
+		<li class="activity__card logo-rhvoice">
+			<p>Руководитель лаборатории <a target="_blank" rel="noopener" href="https://rhvoice.su">"RHVoice Lab"</a></p>
+		</li>
+
+		<li class="activity__card logo-data2data">
+			<p>Сооснователь сервиса <a target="_blank" rel="noopener" href="https://data2data.ru">"Данные в данные"</a></p>
+		</li>
+
+		<li class="activity__card logo-tiflo">
+			<p>Ведущий технических и развлекательных эфиров на <a target="_blank" rel="noopener" href="https://youtube.com/tifloinfo">"Tiflo Info"</a></p>
+		</li>
+	</ul>
+</section>
+
+
+
+
+<!--Услуги тестирования доступности:-->
+<section class="container">
+	<h2 class="h1" id="services">Услуги тестирования доступности</h2>
+
+	<p class="mb-m">Тестирование работы вашего сайта с клавиатуры и со скринридером. Укажу проблемные места, в которых можно улучшить взаимодействие с пользователем или где оно в принципе невозможно. Советы по исправлению.</p>
+
+	<ul class="work-list mb-m">
+		<li>Больше людей смогут использовать сайт, а это больше клиентов и преимущество над конкурентами</li>
+
+		<li>Приятнее опыт использования сайтом и лояльная аудитория из тех, кому необходима доступность</li>
+
+		<li>Улучшение оценок в SEO</li>
+
+		<li>Увеличение охвата</li>
+	</ul>
+
+	<a class="button button--icon mb-l" target="_blank" rel="noopener" href="mailto:{{ _site.siteEmail }}">Обсудить проект</a>
+</section>
+
+
+
+
+<!--Контакты:-->
+<section class="container">
+	<h2 class="vh" id="contacts">Контакты</h2>
+
+	<h3 class="h1">Как связаться</h3>
+
+	<ul class="contacts links mb-l">
+		<li>Телефон<a class="contacts__card" href="tel:{{ _site.siteTel }}">{{ _site.siteTel }}</a></li>
+
+		<li>Почта<a class="contacts__card" href="mailto:{{ _site.siteEmail }}">{{ _site.siteEmail }}</a></li>
+
+		<li>Telegram<a class="contacts__card" target="_blank" rel="noopener" href="{{ _site.siteTelegram }}">t.me/maniyax</a></li>
+	</ul>
+
+
+
+
+	<h3 class="h1">Где следить</h3>
+
+	<ul class="links">
+		<li>
+			<a class="links__card icon-telegram" target="_blank" rel="noopener" href="{{ _site.siteTelegramBlog }}">Telegram</a>
+		</li>
+
+		<li>
+			<a class="links__card icon-facebook" target="_blank" rel="noopener" href="{{ _site.siteFacebook }}">Facebook</a>
+		</li>
+
+		<li>
+			<a class="links__card icon-vkontakte" target="_blank" rel="noopener" href="{{ _site.siteVkontakte }}">VKontakte</a>
+		</li>
+
+		<li>
+			<a class="links__card icon-youtube" target="_blank" rel="noopener" href="{{ _site.siteYouTube }}">YouTube</a>
+		</li>
+
+		<li>
+			<a class="links__card icon-instagram" target="_blank" rel="noopener" href="{{ _site.siteInstagram }}">Instagram</a>
+		</li>
+
+		<li>
+			<a class="links__card icon-twitter" target="_blank" rel="noopener" href="{{ _site.siteTwitter }}">Twitter</a>
+		</li>
+	</ul>
+</section>
