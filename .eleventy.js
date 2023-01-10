@@ -7,53 +7,61 @@ const htmlmin = require('html-minifier-terser');
 //const esbuild = require('esbuild');
 const highlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const fs = require('fs');
-const Image = require("@11ty/eleventy-img");
+const Image = require('@11ty/eleventy-img');
+const eleventyPluginHelmet = require('eleventy-plugin-helmet');
+const path = require('path');
+const typograf = require('typograf');
+const svgo = require('svgo');
 //const prettydata = require('pretty-data');
-//const rss = require('@11ty/eleventy-plugin-rss');
 
 
+
+
+//------------------------------------------------
+// Шорткоды: -------------------------------------
+//------------------------------------------------
 
 // Шорткод для создания <img> в HTML:
-// Как использовать: {% image "class1 class2", "./src/img/cat.jpg", "Аlt name", "(min-width: 30em) 50vw, 100vw" %}
+// Как использовать: {% image "./src/img/cat.jpg", "Аlt name", "class1 class2", "(min-width: 30em) 50vw, 100vw" %}
 async function imageShortcode(src, alt, sizes, cls) {
 	let metadata = await Image(src, {
-		formats: [null],// в каких форматах создать картинки ["avif", "webp", null].
+		formats: ["avif", "webp", null],// в каких форматах создать картинки ["avif", "webp", null].
 		extBlackList: ["svg"],
 		widths: [null],// в каких разрешениях создать картинки [460, 1200, null].
-		//filenameFormat: (id, src, width, format) => {
-		//	const extension = path.extname(src);
-		//	const name = path.basename(src, extension);
-		//	return `${name}-${width}.${format}`;
-		//},
+		filenameFormat: (id, src, width, format) => {
+			const extension = path.extname(src);
+			const name = path.basename(src, extension);
+			return `${name}.${format}`;// return `${name}-${width}w.${format}`;
+		},
 		sharpOptions: {
 			animated: true,
 		},
 		sharpJpegOptions: {
-			quality: 80,// качество "1-100", default "80".
+			quality: 65,// качество "1-100", default "80".
 		},
 		sharpPngOptions: {
-			colors: 256,// количество цветов, default "256".
-			quality: 100,// использовать минимум цветов для заданного качества (0-100?), default "100".
-			compressionLevel: 6,// сжатие "0"(fastest, largest) to "9"(slowest, smallest), default "6".
-			effort: 7,// ресурсы процессора, "0-9", default "7".
+			colors: 128,// количество цветов, default "256".
+			quality: 60,// использовать минимум цветов для заданного качества (0-100?), default "100".
+			compressionLevel: 9,// сжатие "0"(fastest, largest) to "9"(slowest, smallest), default "6".
+			effort: 8,// ресурсы процессора, "0-9", default "7".
 		},
 		sharpWebpOptions: {
-			quality: 80,// качество "1-100", default "80".
+			quality: 60,// качество "1-100", default "80".
 			//lossless: true, сжатие без потерь, default "false".
 			effort: 4,// ресурсы процессора, "0-6", default "4".
 		},
 		sharpAvifOptions: {
-			quality: 50,// качество "1-100", default "50".
+			quality: 40,// качество "1-100", default "50".
 			//lossless: true, сжатие без потерь, default "false".
-			effort: 4,// ресурсы процессора, "0-9", default "4".
+			effort: 8,// ресурсы процессора, "0-9", default "4".
 		},
 		urlPath: "/img/",// путь который будет в теге <img>.
 		outputDir: "./site/img/",// путь записи картинок на выходе.
 	});
 	let imageAttributes = {
 		alt,
-		sizes,
-		class: cls,
+		//sizes,
+		//class: cls,
 		//loading: "lazy",
 		//decoding: "async",
 	};
@@ -62,22 +70,55 @@ async function imageShortcode(src, alt, sizes, cls) {
 	});
 }
 
+// Эксперимент с шорткодом для фоновых картинок:
+// Как использовать: {% bgimage "./img/plaksin-1.jpeg" %}
+//async function bgimageShortcode(src) {
+//	let metadata = await Image(src, {
+//		widths: [null],
+//		formats: [null]
+//	});
+//	let data = metadata.jpeg[metadata.jpeg.length - 1];
+//	return `url('${data.url}')`;
+//}
+
+//eleventyConfig.addShortcode("bgimage", bgimageShortcode);
+//eleventyConfig.addNunjucksAsyncShortcode("bgimage", bgimageShortcode);
+//eleventyConfig.addLiquidShortcode("bgimage", bgimageShortcode);
+//eleventyConfig.addJavaScriptFunction("bgimage", bgimageShortcode);
 
 
 
-module.exports = (config) => {
 
-	// Фильтры для переменных Eleventy:
+module.exports = (eleventyConfig) => {
 
-	// Фильтр для даты:
+	eleventyConfig.setBrowserSyncConfig({ open: true, });
+
+	// Обработка картинок:
+	eleventyConfig.addNunjucksAsyncShortcode("image", imageShortcode);
+	eleventyConfig.addLiquidShortcode("image", imageShortcode);
+	eleventyConfig.addJavaScriptFunction("image", imageShortcode);
+
+
+	// Плагины:
+	eleventyConfig.addPlugin(highlight);
+	eleventyConfig.addPlugin(eleventyPluginHelmet);
+
+
+
+
+	//------------------------------------------------
+	// Фильтры для переменных: -----------------------
+	//------------------------------------------------
+
+	// Фильтр для короткой даты ISO:
 	// Использование: "{{ page.date | dateISO }}", результат: "2022-01-28"
-	config.addFilter('dateISO', (value) => {
+	eleventyConfig.addFilter('dateISO', (value) => {
 		return value.toISOString().split('T')[0];
 	});
 
 	// Фильтр для удобочитаемой русской даты:
-	// Использование: "{{ page.date | dateRus }}", результат: "???":
-	config.addFilter("dateRus", (date) => {
+	// Использование: "{{ page.date | dateRus }}", результат: "13 нояб. 2022 г.":
+	eleventyConfig.addFilter("dateRus", (date) => {
 		const options = { day: "numeric", month: "short", year: "numeric" };
 		return date.toLocaleDateString("ru-RU", options);
 	});
@@ -85,24 +126,27 @@ module.exports = (config) => {
 
 
 
-	// Обработка HTML:
-	config.addTransform('html-minify', (content, path) => {
+	//------------------------------------------------
+	// Обработка HTML: -------------------------------
+	//------------------------------------------------
+
+	eleventyConfig.addTransform('html-minify', (content, path) => {
 		if (path && path.endsWith('.html')) {
 			return htmlmin.minify(
 				content, {
-				collapseBooleanAttributes: true,
-				//collapseInlineTagWhitespace: true,
-				collapseWhitespace: true,
-				decodeEntities: true,
-				includeAutoGeneratedTags: false,
-				minifyCSS: true,
-				minifyJS: true,
-				removeComments: true,
-				removeRedundantAttributes: true,
-				removeScriptTypeAttributes: true,
-				removeStyleLinkTypeAttributes: true,
-				sortAttributes: true,
-				sortClassName: true,
+					removeComments: true,
+					collapseWhitespace: true,
+					removeScriptTypeAttributes: true,
+					removeStyleLinkTypeAttributes: true,
+					removeRedundantAttributes: true,
+					collapseBooleanAttributes: true,
+					decodeEntities: true,
+					includeAutoGeneratedTags: false,
+					minifyCSS: true,
+					//minifyJS: true,
+					//sortAttributes: true,
+					//sortClassName: true,
+					//collapseInlineTagWhitespace: true,
 				}
 			);
 		}
@@ -112,35 +156,38 @@ module.exports = (config) => {
 
 
 
-	// Обработка CSS:
-	//const styles = [
-	//	'./src/styles.css',
-	//	//'./src/styles/light.css',
-	//	//'./src/styles/dark.css',
-	//];
+	//------------------------------------------------
+	// Обработка CSS: --------------------------------
+	//------------------------------------------------
 
-	//config.addTemplateFormats('css');
+	const styles = [
+		'./src/styles.css',
+		//'./src/styles/light.css',
+		//'./src/styles/dark.css',
+	];
 
-	//config.addExtension('css', {
-	//	outputFileExtension: 'css',
-	//	compile: async (content, path) => {
-	//		if (!styles.includes(path)) {
-	//			return;
-	//		}
-	//		return async () => {
-	//			let output = await postcss([
-	//				pimport,
-	//				minmax,
-	//				autoprefixer,
-	//				csso,
-	//			]).process(content, {
-	//				from: path,
-	//			});
-	//			return output.css;
-	//		}
-	//	}
-	//});
-	//config.addNunjucksAsyncFilter('css', (path, callback) => {
+	eleventyConfig.addTemplateFormats('css');
+	eleventyConfig.addExtension('css', {
+		outputFileExtension: 'css',
+		compile: async (content, path) => {
+			if (!styles.includes(path)) {
+				return;
+			}
+			return async () => {
+				let output = await postcss([
+					pimport,
+					minmax,
+					autoprefixer,
+					csso,
+				]).process(content, {
+					from: path,
+				});
+				return output.css;
+			}
+		}
+	});
+
+	//eleventyConfig.addNunjucksAsyncFilter('css', (path, callback) => {
 	//	fs.readFile(path, 'utf8', (error, content) => {
 	//		postcss([
 	//			pimport,
@@ -158,10 +205,13 @@ module.exports = (config) => {
 
 
 
-	// Обработка JS:
-	//config.addTemplateFormats('js');
+	//------------------------------------------------
+	// Обработка JS: ---------------------------------
+	//------------------------------------------------
 
-	//config.addExtension('js', {
+	//eleventyConfig.addTemplateFormats('js');
+
+	//eleventyConfig.addExtension('js', {
 	//	outputFileExtension: 'js',
 	//	compile: async (content, path) => {
 	//		if (path !== './src/scripts.js') {
@@ -181,34 +231,42 @@ module.exports = (config) => {
 
 
 
-	// Обработка картинок:
-	config.addNunjucksAsyncShortcode("image", imageShortcode);
-	config.addLiquidShortcode("image", imageShortcode);
-	config.addJavaScriptFunction("image", imageShortcode);
+	//------------------------------------------------
+	// Обработка SVG: --------------------------------
+	//------------------------------------------------
+
+	//eleventyConfig.addTransform('svg-minify', (content, path) => {
+	//	if (path && path.endsWith('.svg')) {
+	//		return svgo.minify(
+	//			content, {}
+	//		);
+	//	}
+	//	return content;
+	//});
 
 
 
 
-	// Плагины:
-	config.addPlugin(highlight);
+	//------------------------------------------------
+	// Прямое копирование файлов и папок: ------------
+	//------------------------------------------------
 
-
-
-
-	// Прямое копирование файлов и папок:
 	[
-		'src/img',
+		'src/img/**/*.svg',
 		//'src/img/**/*.{svg,avif,webp,jxl,jpg,jpeg,png,tif,tiff,bmp,gif}',
 		//'src/fls',
-		'src/*.{txt,xml,json,webmanifest,htaccess}',
+		'src/*.{js,txt,xml,json,webmanifest,htaccess,ico}',
 	].forEach(
-		path => config.addPassthroughCopy(path)
+		path => eleventyConfig.addPassthroughCopy(path)
 	);
 
 
 
 
-	// Конфигурация путей и папок:
+	//------------------------------------------------
+	// Конфигурация путей и папок: -------------------
+	//------------------------------------------------
+
 	return {
 		//pathPrefix: "/eleventy-blog/", это добавляет каталог в путь файлов
 		addPassthroughFileCopy: true,
@@ -221,7 +279,7 @@ module.exports = (config) => {
 			output: "site",
 			includes: "_includes",
 			layouts: "_includes",
-			data: "_data"
+			data: "_includes"
 		}
 	};
 };
