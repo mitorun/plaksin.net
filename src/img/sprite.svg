@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+<defs>
+<style>:root svg:not(:target) {display: none;}</style>
+</defs>
+
+
+<svg id="checkbox" viewBox="0 0 8 8" fill="none" stroke="#0D7A6E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+	<path d="M1.5 4L3 6L5.5 2"/>
+</svg>
+
+
+<svg id="arrow-link" viewBox="0 0 96 96" fill="none" stroke="currentcolor" stroke-width="8">
+	<path d="M40 19L9 19V87H77V56" stroke-linejoin="round"/>
+	<path d="M87 9L41 55 M51 9H87V45"/>
+</svg>
+
+
+<svg id="arrow-link-white" viewBox="0 0 96 96" fill="none" stroke="#fff" stroke-width="10">
+	<path d="M40 19L9 19V87H77V56" stroke-linejoin="round"/>
+	<path d="M87 9L41 55 M51 9H87V45"/>
+</svg>
+
+
+<!--<svg id="icon-task" viewBox="0 0 96 96" fill="none">
+	<path d="M76 0H20C6 0 0 6 0 20V76C0 90 6 96 20 96H76C90 96 96 90 96 76V20C96 6 90 0 76 0Z" fill="#9ECAC5"/>
+	<path d="M21 32L25 36L36 25M21 66L25 70L36 59M49 33H75M49 67H75" stroke="#0D7A6E" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>-->
+
+
+<svg id="icon-flash" viewBox="0 0 96 96" fill="none">
+	<path d="M39 53H51.5V82C51.5 86.5 57 88 59.5 85L90 50.5C92.5 47.5 90.5 43 86.5 43L74 43V14C74 9.5 69 8 66 11L36 45C33.5 48 35 53 39 53Z" fill="#0D7A6E"/>
+	<path d="M8 16H36M8 48H20M8 80H32" stroke="#9ECAC5" stroke-width="6" stroke-linecap="round"/>
+</svg>
+
+
+<svg id="icon-book" viewBox="0 0 96 96" fill="none">
+	<path d="M82 20V72H14L14 20C14 13 19 8 26 8L70 8C77 8 82 13 82 20Z" fill="#9ECAC5"/>
+	<path d="M82 60V76C82 83 77 88 70 88H26C19 88 14 83 14 76V72C14 65 19 60 26 60H82Z" fill="#0D7A6E"/>
+	<path d="M32 28H64M32 42H52" stroke="#0D7A6E" stroke-width="6" stroke-linecap="round"/>
+</svg>
+
+
+<svg id="icon-user" viewBox="0 0 96 96" fill="none">
+	<path d="M48 48C59 48 68 39 68 28C68 17 59 8 48 8C37 8 28 17 28 28C28 39 37 48 48 48Z" fill="#9ECAC5"/>
+	<path d="M48 56C28 56 12 69 12 86C12 87 13 88 14 88H82C83 88 84 87 84 86C84 69 68 56 48 56Z" fill="#0D7A6E"/>
+</svg>
+
+
+<svg id="icon-eye" viewBox="0 0 96 96" fill="none">
+	<path d="M85 37C75 22 63 14 48 14C33 14 21 22 11 37C7 43 7 53 11 59C21 74 33 82 48 82C63 82 75 74 85 59C89 53 89 43 85 37Z" fill="#9ECAC5"/>
+	<circle cx="48" cy="48" r="16" fill="#0D7A6E"/>
+</svg>
+
+
+<svg id="icon-teacher" viewBox="0 0 96 96" fill="none">
+	<path d="M74 46V71C74 76 70 81 65 83C55 87 41 87 31 83C26 81 22 76 22 71V46H74Z" fill="#9ECAC5"/>
+	<path d="M80 26L56 10C52 7 44 7 40 10L16 26C8 31 8 42 16 47L40 63C44 66 52 66 56 63L80 47C88 42 88 31 80 26Z" fill="#0D7A6E"/>
+	<path d="M82 60V36" stroke="#0D7A6E" stroke-width="6" stroke-linecap="round"/>
+</svg>
+
+
+<svg id="icon-glass" viewBox="0 0 96 96" fill="none">
+	<path d="M30 11H25C17 11 11 17 11 25V68H85V25C85 17 79 11 71 11H66" stroke="#0D7A6E" stroke-width="6" stroke-linecap="round"/>
+	<path d="M44 60V76C44 83 39 88 32 88H20C13 88 8 83 8 76V60C8 52 13 48 20 48H32C39 48 44 53 44 60Z M88 60V76C88 83 83 88 76 88H64C57 88 52 83 52 76V60C52 52 57 48 64 48H76C83 48 88 53 88 60Z" fill="#9ECAC5"/>
+</svg>
+
+
+<svg id="telegram" viewBox="0 0 96 96" fill="#0D7A6E">
+	<path d="M80 28C80.5 23 79 21 73 23C55 29 13 48 13 48C8.5 50 9 53 13 54L23.5 57C26.5 58 29 58 32 56L59 38C62 36 64 37 62 39L42.5 58C38 63 41 64 45 67L63 79C69 83 71.5 80 73 73C73 73 79 41 80 28Z"/>
+</svg>
+
+
+<svg id="facebook" viewBox="0 0 96 96" fill="#0D7A6E">
+	<path d="M68 26V14C48 10 38 17 38 33V43H26V56H38V91H54V56H65L67 43H54V33C54 28 56 26 61 26H68Z"/>
+</svg>
+
+
+<svg id="vkontakte" viewBox="0 0 96 96" fill="#0D7A6E">
+	<path d="M21 23H8C9 53 22 73 53 73V55C65 57 71 64 74 73H88C85 60 75 52 67 48C75 44 83 34 85 23H72C70 32 61 42 53 43V23H40V58C28 55 21 40 21 23Z"/>
+</svg>
+
+
+<svg id="youtube" viewBox="0 0 96 96" fill="#0D7A6E">
+	<path d="M48 21C85 21 86 22 86 48C86 74 85 75 48 75C11 75 10 74 10 48C10 22 11 21 48 21Z M40 36L60 48L40 60V36Z" fill-rule="evenodd" clip-rule="evenodd"/>
+</svg>
+
+
+<svg id="instagram" viewBox="0 0 96 96" fill="#0D7A6E">
+	<path d="M48 17C22 17 17 22 17 48C17 74 22 79 48 79C74 79 79 74 79 48C79 22 74 17 48 17ZM48 35C55 35 61 41 61 48C61 55 55 61 48 61C41 61 35 55 35 48C35 41 41 35 48 35ZM69 31C69 33 67.5 35 65 35C62.5 35 61 33 61 31C61 29 62.5 27 65 27C67.5 27 69 29 69 31Z" fill-rule="evenodd" clip-rule="evenodd"/>
+</svg>
+
+
+<svg id="twitter" viewBox="0 0 96 96" fill="#0D7A6E">
+	<path d="M47 38C34 37 23.5 31 17 23C11 35 22 42 22 42C19 42 15 40.5 15 40.5C16 53 27 55 27 55C24 56 20 55 20 55C23.5 65 34 65 34 65C26 72 12 71 12 71C29 81 49 79 61 69C73 59 77 46 76.5 34.5C76.5 34.5 81 32 84 27C84 27 81 28.5 76 29C76 29 81 26 82 21C82 21 78 24 72.5 24.5C69 20.5 59 18 53 23C47 28 46 33 47 38Z"/>
+</svg>
+
+
+<svg id="logo" viewBox="0 0 5 5" fill="currentcolor">
+	<path d="M5 0H0V5H1V1H4V5H5V0Z M3 2H2V3H3V2Z M3 4H2V5H3V4Z"/>
+</svg>
+
+
+<svg id="logo-data2data" viewBox="0 0 300 300" fill="#fff">
+	<g clip-path="url(#a)">
+	<path d="M167.59 180.35 306.75 100M-6.6 199.73l139.17-80.35" stroke="#fff" stroke-width="17.58" stroke-linecap="round"/>
+	<path d="M211.35 145.15a61.67 61.67 0 0 1-2.08 21.5l19.68-11.37a78.8 78.8 0 0 0-1.15-19.63l-16.45 9.5Zm-4.2-17.87 15.34-8.86a79.1 79.1 0 0 0-112.03-36.8l-130.67 75.43 8.8 15.22 130.78-75.5.08-.05a61.52 61.52 0 0 1 87.7 30.56Z"/>
+	<path d="M96.73 180.88a61.52 61.52 0 0 0 84.04 22.52l138.15-79.77 8.79 15.23-138.15 79.76a79.1 79.1 0 0 1-112.03-36.8l15.34-8.87a61.97 61.97 0 0 0 3.86 7.93Zm-8.06-25.8a61.68 61.68 0 0 1 2.08-21.5l-19.68 11.37a78.81 78.81 0 0 0 1.15 19.63l16.45-9.5Z"/>
+	<path fill-rule="evenodd" clip-rule="evenodd" d="M188.07 128.14a43.95 43.95 0 1 1-76.12 43.95 43.95 43.95 0 0 1 76.12-43.95Zm-14.58 9.97a26.37 26.37 0 1 1-12.72-12.07 8.78 8.78 0 0 1 15.61 5.55 8.77 8.77 0 0 1-2.9 6.52Z"/>
+	</g>
+	<defs><clipPath id="a"><path fill="#fff" d="M0 0h300v300H0z"/></clipPath></defs>
+</svg>
+
+
+<svg id="logo-rhvoice" viewBox="0 0 300 300" fill="#fff">
+	<path d="M174 20H0l16 27h111l-16 27H32l55 96 16-27-24-42h48l47-81Zm63 0h-31L103 197l16 28 47-83h32l-64 109 16 28L300 20h-31l-56 95h-31l55-95Z"/>
+</svg>
+
+
+<svg id="logo-tiflo" viewBox="0 0 300 300" fill="#fff">
+	<path d="M150 10a140 140 0 0 0-77.5 256.6l35.2-60.6a70 70 0 0 1 69.5-120.7l35.1-60.7A139.7 139.7 0 0 0 150 10Zm-20.7 207c-3-.9-6-2-8.8-3.3l-30.2 63c8.3 3.9 17 7 26.2 9.3l12.8-69Zm47.7-2.2c-3 1.2-6 2.3-9.2 3l18.4 67.5a139 139 0 0 0 25.8-9.7l-35-60.8Zm28.6-22a72 72 0 0 1-13.6 13.4l35.2 60.6a140.8 140.8 0 0 0 39-38.8l-60.6-35.2Zm14-33.5a69.7 69.7 0 0 1-5.1 18.4l60.8 34.8a139.2 139.2 0 0 0 14.4-53.2h-70.1Zm-4.8-36.3c2.4 5.8 4 12 4.9 18.5h70A139.2 139.2 0 0 0 275.6 88l-60.8 35Zm-22.3-28.8a72 72 0 0 1 13.5 13.5l60.7-35a140.8 140.8 0 0 0-39-39.2l-35.2 60.7ZM136 289.3l7-69.5c3 .3 6.2.4 9.3.3l11.2 69.3c-9.1.8-18.4.8-27.5 0Z"/>
+	<path d="M202 150a52 52 0 1 1-104 0 52 52 0 0 1 104 0Z"/>
+</svg>
+
+
+</svg>
