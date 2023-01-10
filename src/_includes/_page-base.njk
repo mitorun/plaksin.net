@@ -1,0 +1,47 @@
+<!doctype html><!-- Сайт https://plaksin.net/ -->
+<html lang="{{ _site.siteLang }}">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<title>{{ title if page.url == '/' else title + ' – ' + _site.siteName }}</title>
+	<meta name="description" content="{{ description }}">
+	<!--<meta name="author" content="Oleg Mitorun">-->
+	<meta name="generator" content="Eleventy">
+
+	<!--<link rel="stylesheet" href="/styles.css"/>-->
+	<!--<link rel="icon" sizes="any" href="/favicon.ico">-->
+	<link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
+
+	<link rel="preload" as="image" href="/img/sprite.svg">
+	<!--<link rel="preload" as="image" href="/img/plaksin-1.jpeg">-->
+	<!--<link rel="canonical" href="{{ _site.siteUrl + page.url }}">-->
+
+	<!-- Вставка инлайн CSS переменными Nunjucks: -->
+	{% set css %}
+		{% include "styles.css" %}
+	{% endset %}
+	<style>
+		{{ css | safe }}
+	</style>
+</head>
+<body class="page-{% if pageClass %}{{ pageClass }}{% elif page.fileSlug %}{{ page.fileSlug }}{% else %}home{% endif %}">
+
+
+	{% include "_header.njk" %}
+
+
+	<main class="main">
+
+		{{ content | safe }}
+
+	</main>
+
+
+	{% include "_footer.njk" %}
+
+
+	<noscript>У вас в браузере отключён JavaScript</noscript>
+
+
+</body>
+</html>

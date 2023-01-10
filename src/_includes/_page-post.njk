@@ -1,0 +1,21 @@
+---
+layout: _page-base.njk
+---
+
+	<section class="container">
+
+		<h1>{{ title }}</h1>
+
+		<div class="post-author">
+			<time datetime="{{ date.toISOString() }}">{{ date | dateRus }}</time>
+			<!--<span class="time-new">Обновлено: <time datetime="2021-04-29">29 апреля 2021</time></span><br>-->
+			<address>{% if author %}{{ author }}{% else %}Артём Плаксин{% endif %}</address>
+		</div>
+
+		<div class="post">
+
+			{{ content | safe }}
+
+		</div>
+
+	</section>

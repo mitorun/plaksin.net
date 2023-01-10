@@ -1,0 +1,1064 @@
+/* Сайт https://plaksin.net/ */
+
+/*@font-face {
+	font-weight: 100 900;
+	font-family: 'Inter';
+	font-style: normal;
+	src: url('/fls/inter-100-900-cyrillic.woff2') format('woff2');
+	unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+	font-weight: 100 900;
+	font-family: 'Inter';
+	font-style: normal;
+	src: url('/fls/inter-100-900-latin.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}*/
+
+:root {
+	--font-family: 'Inter', 'Roboto', 'Arial', 'system-ui', '-apple-system', 'Segoe UI', 'Helvetica Neue', 'Noto Sans', sans-serif;/* font-family для обычного текста и заголовков */
+	--font-family-heading: 'Inter', 'Roboto', 'Arial', 'system-ui', '-apple-system', 'Segoe UI', 'Helvetica Neue', 'Noto Sans', sans-serif;/* font-family для заголовков */
+	--font-family-mono: 'SFMono-Regular', 'ui-monospace', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;/* font-family для моноширинного шрифта (для кода) */
+	--font-size-l: 19px;
+	--font-size-m: 16px;
+	--font-size-s: 13px;
+	--font-weight-l: 620;/* толщина жирного текста, обычно 700 (заголовки, жирный текст) */
+	--font-weight-m: 420;/* толщина базового текста, обычно 400 (обычный наборный текст) */
+	--line-height-m: 1.5;/* базовый текст body */
+	--line-height-s: 1.2;/* поплотней текст, заголовки h2-h4 */
+
+	--container-padding: 14px;/* это боковые паддинги для мобилки */
+	--margin-xl: 120px;/* отступ между разделами section */
+	--margin-l: 70px;/* отступ для блоков внутри section */
+	--margin-m: 24px;/* отступ для крупных элементов */
+	--margin-s: 14px;/* отступ между карточками */
+	--margin-xs: 8px;/* отступ для мелочи */
+
+	--color: hsl(0, 0%, 0%);/* базовый цвет текста */
+	--bg: hsl(0, 0%, 100%);/* базовый цвет фона */
+	--grey: hsl(0, 0%, 44%);/* серый цвет (для маловажных шрифтов и элементов) */
+	--grey-light: hsl(173, 30%, 82%);/* светло-серый (для рамок) */
+	--grey-lightest: hsl(173, 40%, 96%);/* светло-светло-серый (для фона разных элементов) */
+	--color-main: hsl(173, 81%, 26%);/* #0d786b фирменный цвет сайта (для усиления акцента) */
+
+	--border: 1px solid var(--grey-light);/* лёгкая рамка (для областей кода, клавиш) */
+	--border-radius: 12px;/* закругление углов стандартное */
+	--border-radius-s: 8px;/* закругление углов внутреннее */
+	tab-size: 2;
+}
+
+@media (min-width: 576px) {
+	:root {
+		--font-size-l: 21px;
+		--font-size-m: 18px;
+		--font-size-s: 15px;
+		--line-height-m: 1.6;
+		--line-height-s: 1.25;
+		--container-padding: 40px;
+		--margin-l: 80px;
+		--margin-m: 36px;
+		--margin-s: 16px;
+		--margin-xs: 10px;
+	}
+}
+
+@media (min-width: 1024px) {
+	:root {
+		--font-size-l: 23px;
+		--font-size-m: 20px;
+		--font-size-s: 17px;
+
+		--margin-l: 130px;
+		--margin-m: 50px;
+		--margin-s: 20px;
+		--margin-xs: 12px;
+	}
+}
+
+*,
+::after,
+::before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	/*font-size: 100%; это вариант из reset.css */
+	/*font: inherit; это вариант из reset.css */
+	/*vertical-align: baseline; это вариант из reset.css */
+	/*border: 0; это вариант из reset.css */
+
+	/*outline: 1px solid hsla(0, 100%, 50%, 0.3);
+	outline-offset: 0; это для тестирования границ элементов (переполнение) */
+}
+
+*:focus {
+	/*outline: #513aa6 dashed 2px;*/
+	outline-offset: 3px;
+}
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding: clamp(30px, 10vh, 120px) 20px;
+}
+
+body {
+	min-height: 100vh;
+	font-family: var(--font-family, sans-serif);
+	font-weight: var(--font-weight-m, 400);
+	font-size: var(--font-size-m, 16px);
+	line-height: var(--line-height-m, 1.5);
+	color: var(--color, hsl(0, 0%, 0%));
+	overflow-wrap: break-word;
+	background-color: var(--bg, hsl(0, 0%, 100%));
+	text-rendering: optimizespeed;
+	-webkit-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: hsla(0, 0%, 0%, 0);
+}
+
+/* Ниже даны стандартные настройки для заголовков сайта. Они будут работать по тегу без добавления класса, а также и по аналогичному классу (можно добавить для любого элемента). Например можно применять конструкции типа <h1 class="h3"> */
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+	margin-bottom: 0.5em;
+	font-family: var(--font-family-heading, sans-serif);
+	/*padding-top: 48px; это чтобы якорная ссылка выше открывала и как отступ от прошлого раздела! */
+	font-weight: var(--font-weight-l);
+	line-height: var(--line-height-s, 1.25);/* было 1.25 для полосы у донора */
+	/*border-bottom: var(--border);*/
+}
+
+h1,
+.h1 {
+	font-size: clamp(23px, calc(21px + 1vw), 36px);
+}
+
+h2,
+.h2 {
+	font-size: clamp(21px, calc(19px + 0.7vw), 32px);
+}
+
+h3,
+.h3 {
+	font-size: clamp(19px, calc(17px + 0.5vw), 28px);
+}
+
+h4,
+.h4 {
+	font-size: clamp(18px, calc(16px + 0.3vw), 24px);
+}
+
+p {
+	max-width: 830px;
+}
+
+/*p:not([class]):not(:last-of-type),*/
+
+p:not([class]),
+.p {
+	margin-bottom: 1em;/* или лучше var(--font-size-m)? */
+}
+
+.font-l {
+	font-size: var(--font-size-l, 19px);
+}/* это класс для большого текста */
+
+.font-m {
+	font-size: var(--font-size-m, 16px);
+}/* это класс для среднего текста */
+
+.font-s {
+	font-size: var(--font-size-s, 13px);
+}/* это класс для маленького текста */
+
+b,
+strong,
+.b,
+.bold,
+.font-b {
+	font-weight: var(--font-weight-l);
+}/* это класс для жирного текста (bold) */
+
+i,
+.i {
+	font-style: oblique;/*italic*/
+}
+
+.g,
+.grey,
+.font-g {
+	color: var(--grey);/* или var(--color-transparent) */
+}/* это класс для серого текста (второстепенного) */
+
+a,
+button,
+input,
+textarea,
+summary,
+select,
+optgroup,
+svg {
+	font: inherit;
+	color: inherit;
+	/*text-decoration: none; эксперимент, чтобы не писать отдельно для ссылки */
+	touch-action: manipulation;/* или pan-x pan-y pinch-zoom; это убирает задержку ≈300мс после клика на тачскринах (ожидание дабл клика), но имеет такой минус, что элемент остаётся подсвеченным при возвращении на страницу, например кнопка меню после нажатия так и остаётся с синим фоном и это очень мешает. С этим свойством ещё нужно разбираться.
+	Чтобы убрать синее подсвечивание - нужно элементу вернуть значение touch-action: auto; */
+}/* сюда нужно собрать все интерактивные теги-элементы, на которые можно нажимать и у которых настройки текста не наследуются */
+
+a[class] {
+	text-decoration: none;
+}
+
+a:not([class]),
+a:not([class]):visited,
+a.a {
+	padding-bottom: 0.07em;
+	text-decoration: none;
+	/*text-decoration: underline; убрать text-decoration: none;*/
+	/*color: var(--color-main-dark); или hsl(224, 68%, 54%); или inherit;*/
+	color: var(--color-main);
+	border-bottom: 1px solid var(--color-main);
+	transition: 0.15s linear;
+}
+
+a:not([class]):hover,
+a:not([class]):focus,
+a:not([class]):active,
+a.a:hover,
+a.a:focus,
+a.a:active {
+	/*text-decoration: none;*/
+	border-color: transparent;/* можно придумать анимацию чтобы бордер интересно исчезал */
+}
+
+ul:not([class]),
+ol:not([class]),
+.list {
+	margin-top: 0.5em;
+	margin-bottom: 1em;
+	padding: 0 0 0 30px;/* думаю лучше не задавать отступ в em, иначе будут криво равняться li с разными размерами шрифтов */
+}/* это класс для стандартного вида списков ul/ol */
+
+ul[class],
+ol[class] {
+	list-style: none;
+}
+
+ul:not([class]) {
+	list-style-type: square;
+}/* это изменение маркера на квадратики */
+
+ul:not([class]) li:not([class]),
+ol:not([class]) li:not([class]),
+dl:not([class]) dd:not([class]) {
+	/*list-style-type:"⚠"; пример изменения вида маркеров */
+	margin-bottom: 0.3em;/* или 0.5em */
+}
+
+li:not([class])::marker {
+	/*content:"[" counter(list-item)"] "; пример изменения вида маркеров */
+	/*font-size: 90%; пример изменения размера маркеров */
+	/*font-weight: bold;*/
+	color: var(--color-main);/* изменение цвета маркеров */
+}
+
+hr,
+.hr {
+	/*margin: var(--font-size-m) 0; было в бутстрапе */
+	border: 0;
+	border-bottom: var(--border);
+}
+
+kbd,
+code,
+pre,
+samp {
+	font-family: var(--font-family-mono);
+	font-size: 1em;
+	direction: ltr/*rtl:ignore*/;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	word-break: break-all;
+	unicode-bidi: bidi-override;/* normal | nowrap | pre | pre-line | pre-wrap; обычно используют pre-wrap, но мне хочется попробовать чтобы строки не переносились, а добавлялся горизонтальный скролл на мобилках. В бутстрапе break-word. */
+}
+
+code:not([class]),
+kbd:not([class]),
+.code,
+.kbd {
+	/*display: inline-block;*/
+	margin: 0 0.1em;
+	padding: 0.1em 0.3em;
+	background: var(--grey-lightest);
+}
+
+svg {
+	shape-rendering: geometricprecision;/* это чтобы SVG рендерились со сглаживанием. auto | optimizeSpeed | crispEdges | geometricPrecision | inherit */
+	/*fill: currentColor; или var(--color) или inherit */
+	/*stroke: currentColor; или var(--color) или inherit */
+	transition: 0.2s ease-in;/* анимация для ховера на иконки-ссылки, должна быть такая же как и у самих ссылок */
+}
+
+img {
+	display: block;/* это избавляет от пустой строки под картинкой, равной line-height. У этого способа есть минус когда нам не нужно чтобы картинка была блочной. Ещё один способ - это задать родителю картинки display: flex; (и line-height: 0; ?). */
+	max-width: 100%;/* или width: 100%; */
+	height: auto;/* или max-height: 100%; */
+	/*vertical-align: middle; стоит в бутстрапе */
+	object-fit: contain;
+	border-radius: var(--border-radius-s);
+	/*filter: grayscale(1);*/
+	/*content-visibility: auto; это чтобы браузер не тратил ресурсы на картинку, пока не получит её (полностью?) */
+	/*image-rendering: pixelated; убирает сглаживание растровых картинок при масштабировании, делая чёткие пиксельные картинки */
+}
+
+figure {
+	width: fit-content;
+	margin: var(--font-size-m, 16px) 0 29px;/* или 20px auto 36px; если картинку по центру */
+}
+
+figcaption {
+	margin-top: 0.6em;
+	font-size: var(--font-size-s);
+	color: var(--grey);/* было var(--black-transparent); */
+	/*text-align: center; если картинку по центру */
+}
+
+/*-------------------------------------------------
+------ Основные структурные блоки страниц: --------
+-------------------------------------------------*/
+
+/* Способ ограничивать контент без отдельного контейнера: */
+
+.container {
+	padding-right: max(calc(50% - 1140px / 2), var(--container-padding, 14px));
+	padding-left: max(calc(50% - 1140px / 2), var(--container-padding, 14px));
+}
+
+.mb-l {
+	margin-bottom: var(--margin-l);
+}
+
+.mb-m {
+	margin-bottom: var(--margin-m);
+}
+
+.mb-s {
+	margin-bottom: var(--margin-s);
+}
+
+.pt-m {
+	padding-top: var(--margin-m);
+}
+
+/* Растягивание ссылки на всю карточку (для самой карточки надо задать position: relative !): */
+
+.stretch::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+}
+
+
+
+/*---------------------------------------------------------
+------------------- Хедер и меню: -------------------------
+---------------------------------------------------------*/
+
+.header {
+	display: grid;
+	grid-template: auto auto / min-content 1fr;
+	gap: calc(var(--margin-s) + 2px) var(--margin-m);
+	align-items: center;
+	/*margin-bottom: var(--margin-l);*/
+	padding-top: calc(var(--margin-s) + 6px);
+	/*padding-bottom: 20px;*/
+	line-height: 1.4;
+}
+
+@media (min-width: 800px) {
+	.header {
+		grid-template: auto auto / min-content 1fr auto;
+	}
+}
+
+.header__brand {
+	display: grid;
+	place-items: center;
+	min-height: 46px;
+	padding-left: 46px;
+	font-weight: var(--font-weight-l);
+	/*font-size: var(--font-size-m);*/
+	/*line-height: 1.4;*/
+	background: padding-box url('/img/sprite.svg#logo') 0% 40% / 37px 37px no-repeat;
+	transition: 0.15s linear;
+}
+
+@media (min-width: 800px) {
+	.header__brand {
+		padding-left: 58px;
+		background-position: 0% 44%;
+		background-size: 44px 44px;
+		/*background: padding-box url('/img/sprite.svg#logo') 0% 40% / 44px 44px no-repeat;*/
+	}
+}
+
+.header__brand:hover {
+	color: var(--color-main);
+}
+
+.header__text {
+	max-width: 24ch;
+	/*font-size: var(--font-size-s);*/
+	/*line-height: 1.4;*/
+	color: var(--grey);
+}
+
+@media (max-width: 386.98px) {
+	.header__brand,
+	.header__text {
+		font-size: var(--font-size-s);
+	}
+}
+
+@media (max-width: 799.98px) {
+	.header__text {
+		justify-self: end;
+		text-align: right;
+	}
+
+	.header__contacts {
+		/*display: none;*/
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		margin: -1px;
+		padding: 0;
+		white-space: nowrap;
+		border: 0;
+		overflow: hidden;
+		-webkit-appearance: none;
+		appearance: none;
+		clip: rect(0 0 0 0);
+		-webkit-clip-path: inset(100%);
+		clip-path: inset(100%);
+	}
+}
+
+/*.header__contacts {
+	justify-self: end;
+}*/
+
+.header__link {
+	display: block;
+	width: fit-content;
+	/*font-size: var(--font-size-s);*/
+	/*line-height: 1.4;*/
+	transition: 0.15s linear;
+}
+
+.header__link:hover {
+	color: var(--color-main);
+}
+
+.header__nav {
+	grid-area: 2 / 1 / -1 / -1;
+	border-top: var(--border);
+	border-bottom: var(--border);
+}
+
+@media (max-width: 767.98px) {
+	.header__nav {
+		margin: 0 calc(-1 * var(--container-padding));
+	}
+}
+
+.menu {
+	display: flex;
+	flex-wrap: wrap;
+	/*gap: 2px;*/
+	justify-content: center;
+	/*display: grid;
+	grid-template-columns: auto;
+	grid-auto-columns: auto;
+	grid-auto-flow: column;
+	gap: var(--margin-xs);
+	place-items: center;
+	place-content: center;*/
+	/*padding-top: 4px;
+	padding-bottom: 4px;*/
+}
+
+.menu__link {
+	display: inline-block;
+	padding: 16px 10px;
+	line-height: 1;
+	white-space: nowrap;
+	text-decoration: none;
+	border-radius: var(--border-radius);
+	box-shadow: inset 0 0 0 3px var(--bg);
+	transition: 0.3s 0.1s;
+}
+
+@media (min-width: 576px) {
+	.menu__link {
+		margin: 0 min(1.5vw, 6px);
+		padding: 16px 20px;
+		box-shadow: inset 0 0 0 6px var(--bg);
+	}
+}
+
+.menu__link[aria-current='page'] {
+	font-weight: 560;
+	color: var(--color-main);
+	background-color: var(--grey-lightest);
+}
+
+.menu__link.active {
+	font-weight: 560;
+}
+
+.menu__link:hover {
+	background-color: var(--grey-lightest);
+	transition: 0.15s;
+}
+
+
+
+
+/*--------------------------------------------
+-------------- Первый экран: -----------------
+--------------------------------------------*/
+
+.main {
+	min-height: max(300px, 72vh);
+	padding-top: var(--margin-m);
+	padding-bottom: var(--margin-l);
+}
+
+.hero {
+	display: grid;
+	gap: var(--margin-s);
+	margin-bottom: var(--margin-m);
+	padding: var(--margin-s);
+	background-color: var(--grey-lightest);
+	/*background: padding-box url('/img/plaksin-1.jpg') var(--margin-s) var(--margin-s) / 374px auto no-repeat rgb(218, 240, 231);*/
+	border-radius: var(--border-radius);
+}
+
+@media (min-width: 800px) {
+	.hero {
+		grid-template: auto auto 1fr / 2fr 1.5fr;
+	}
+
+	.hero__img {
+		grid-area: 1 / 2 / 4 / 3;
+	}
+}
+
+.icon-flash {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.icon-flash::before {
+	content: '';
+	display: block;
+	width: 48px;
+	height: 48px;
+	margin-right: var(--margin-xs);
+	background-image: url('/img/sprite.svg#icon-flash');
+	/* или background: url('/img/sprite.svg#arrow-link') 50%/48px 48px no-repeat var(--grey-lightest); */
+}
+
+.hero > h1,
+.hero > p:not([class]) {
+	margin: 0;
+}
+
+.links {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: var(--margin-s);
+	/*margin-bottom: var(--margin-l);*/
+}
+
+/*.links--fs {
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}*/
+
+@media (min-width: 900px) {
+	.links--fs {
+		grid-template-columns: 2fr 1fr 1fr;
+	}
+}
+
+.links__card {
+	display: grid;
+	grid-template: 1fr auto / 1fr min-content;
+	gap: var(--margin-xs);
+	height: 100%;
+	/*min-height: 140px;*/
+	padding: var(--margin-s);
+	font-weight: var(--font-weight-l);
+	font-size: var(--font-size-l);
+	line-height: 1;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	transition: 0.2s linear;
+}
+
+.links__card:hover {
+	background-color: var(--grey-lightest);
+}
+
+.links__card::after {
+	content: '';
+	grid-area: 1 / 2 / 2 / 3;
+	display: block;
+	width: 18px;
+	height: 18px;
+	background-image: url('/img/sprite.svg#arrow-link');
+}
+
+.links__card::before {
+	content: '';
+	display: grid;
+	place-content: center;
+	width: 60px;
+	height: 60px;
+	line-height: 0;
+	background: url('/img/sprite.svg#arrow-link') 50% / 48px 48px no-repeat var(--grey-lightest);
+	border-radius: var(--border-radius-s);
+}
+
+/*.icon-task::before {
+	background-image: url('/img/sprite.svg#icon-task');
+}*/
+
+.icon-book::before {
+	background-image: url('/img/sprite.svg#icon-book');
+}
+
+.icon-glass::before {
+	background-image: url('/img/sprite.svg#icon-glass');
+}
+
+/*.icon-call::before {
+	background-image: url('/img/sprite.svg#icon-book');
+}*/
+
+
+
+.about {
+	display: grid;
+	gap: var(--margin-s);
+	margin-bottom: var(--margin-l);
+}
+
+@media (min-width: 800px) {
+	.about {
+		grid-template: auto 1fr / 2fr 1.5fr;
+	}
+
+	.about__img {
+		grid-area: 1 / 2 / 3 / 3;
+	}
+}
+
+/*.about > p:not([class]) {
+	margin: 0;
+}*/
+
+/*.youtube-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(292px, 1fr));
+	gap: var(--margin-s);
+	margin-bottom: var(--margin-l);
+}*/
+
+.work-list li {
+	width: fit-content;
+	margin-bottom: 14px;
+	padding: var(--margin-xs) var(--margin-s) var(--margin-xs) calc(var(--margin-s) + 38px);
+	line-height: var(--line-height-s);
+	background: url('/img/sprite.svg#checkbox') var(--margin-s) 50% / 28px 28px no-repeat var(--grey-lightest);
+	border-radius: var(--border-radius-s);
+}
+
+li.icon-user {
+	background-image: url('/img/sprite.svg#icon-user');
+}
+
+li.icon-eye {
+	background-image: url('/img/sprite.svg#icon-eye');
+}
+
+li.icon-teacher {
+	background-image: url('/img/sprite.svg#icon-teacher');
+}
+
+.activity {
+	display: grid;
+	gap: var(--margin-s);
+	margin-bottom: var(--margin-l);
+}
+
+@media (min-width: 800px) {
+	.activity {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.activity__card {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: var(--margin-s);
+	align-items: center;
+	padding: var(--margin-s);
+	border: var(--border);
+	border-radius: var(--border-radius);
+}
+
+.activity__card::before {
+	content: '';
+	display: block;
+	width: 80px;
+	height: 80px;
+	background: url('/img/sprite.svg#logo-tiflo') 50% / 60px auto no-repeat var(--color-main);
+	border-radius: var(--border-radius-s);
+}
+
+/*.logo-tiflo::before {
+	background-image: url('/img/sprite.svg#logo-tiflo');
+}*/
+
+.logo-rhvoice::before {
+	background-image: url('/img/sprite.svg#logo-rhvoice');
+}
+
+.logo-data2data::before {
+	background-image: url('/img/sprite.svg#logo-data2data');
+}
+
+.activity__card p {
+	/*max-width: 36ch;*/
+	margin-bottom: 0;
+}
+
+.button {
+	display: inline-block;
+	min-width: 80px;
+	min-height: 40px;
+	padding: 18px 24px;
+	font-size: var(--font-size-m, 16px);
+	line-height: var(--line-height-xs, 1.2);
+	text-align: center;
+	color: var(--white, hsl(0, 0%, 100%));
+	background-color: var(--color-main, hsl(0, 0%, 15%));
+	/*border: 2px solid var(--color, #000);*/
+	border-radius: var(--border-radius);
+	overflow: hidden;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	transition: 0.2s;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.button--icon {
+	display: grid;
+	grid-template-columns: max-content max-content;
+	gap: var(--margin-s, 16px);
+	align-items: center;
+	width: fit-content;
+}
+
+.button--icon::after {
+	content: '';
+	width: 18px;
+	height: 18px;
+	background: url('/img/sprite.svg#arrow-link-white');
+	/*background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8" fill="none" stroke="%23fff" stroke-width=".6"%3E%3Cpath d="M7 4H0 M5 2L7 4L5 6"/%3E%3C/svg%3E') 50% / 100% no-repeat;*/
+}
+
+.button--icon:hover {
+	opacity: 0.8;
+}
+
+
+/*----------- Контакты: --------------*/
+
+.contacts li {
+	position: relative;
+	padding: var(--margin-s);
+	font-size: var(--font-size-s);
+	line-height: 1;
+	color: var(--grey);
+	border: 1px solid var(--grey-light);
+	border-radius: var(--border-radius);
+	transition: 0.2s linear;
+}
+
+.contacts__card {
+	display: block;
+	padding-top: var(--margin-xs);
+	font-weight: var(--font-weight-l);
+	font-size: var(--font-size-l);
+	color: var(--color);
+}
+
+.contacts__card::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.contacts li:hover {
+	background-color: var(--grey-lightest);
+}
+
+.icon-telegram::before {
+	background-image: url('/img/sprite.svg#telegram');
+}
+
+.icon-facebook::before {
+	background-image: url('/img/sprite.svg#facebook');
+}
+
+.icon-vkontakte::before {
+	background-image: url('/img/sprite.svg#vkontakte');
+}
+
+.icon-youtube::before {
+	background-image: url('/img/sprite.svg#youtube');
+}
+
+.icon-instagram::before {
+	background-image: url('/img/sprite.svg#instagram');
+}
+
+.icon-twitter::before {
+	background-image: url('/img/sprite.svg#twitter');
+}
+
+
+/*--------------------------------------------
+------------------ Футер: --------------------
+--------------------------------------------*/
+
+.footer {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--margin-s);
+	justify-content: space-between;
+	padding-top: 40px;
+	padding-bottom: 44px;
+	background: var(--grey-lightest);
+}
+
+.footer address {
+	font-style: normal;
+}
+
+
+
+
+
+/*------------------------------------------------
+---------- Страница Статьи (Блог): ---------------
+------------------------------------------------*/
+
+.blog {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: var(--margin-s);
+}
+
+.blog__card {
+	position: relative;
+	display: grid;
+	grid-template-rows: min-content 1fr min-content;
+	padding: var(--margin-m) var(--margin-s);
+	border: var(--border);
+	border-radius: var(--border-radius);
+	transition: 0.2s linear;
+}
+
+.blog__card:hover {
+	background-color: var(--grey-lightest);
+}
+
+.blog__title {
+	display: -webkit-box;
+	margin: 0;
+	margin-bottom: var(--margin-s);
+	line-height: var(--line-height-s);
+	text-overflow: '';
+	overflow: hidden;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+
+.blog__summary {
+	/* Код для обрезания текста в 3 точки: */
+	display: -webkit-box;
+	max-height: calc(4em * var(--line-height-s));
+	margin-bottom: var(--margin-s);
+	font-size: var(--font-size-s);
+	line-height: var(--line-height-s);
+	text-overflow: '';
+	overflow: hidden;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 4;/* это чтобы высота блока не становилась выше 4-х строк! */
+}
+
+.blog__date {
+	/*justify-self: end;*/
+	font-size: var(--font-size-s);
+	color: var(--grey);
+}
+
+
+
+
+
+
+
+
+/*------------------------------------------------
+---------- Страницы статей (постов): -------------
+------------------------------------------------*/
+
+.post-author {
+	display: grid;
+	grid-template-columns: auto;
+	grid-auto-columns: auto;
+	grid-auto-flow: column;
+	gap: var(--margin-s);
+	width: fit-content;
+	margin-bottom: var(--margin-m);
+	padding: var(--margin-xs) var(--margin-s);
+	background-color: var(--grey-lightest);
+	border-radius: var(--border-radius);
+}
+
+.post-author > * {
+	font-size: var(--font-size-s);
+	font-style: normal;
+	color: var(--grey);
+}
+
+.post h2,
+.post h3,
+.post h4 {
+	margin-top: 1.8em;
+	padding-bottom: 0.16em;
+	border-bottom: var(--border);
+}
+
+.post {
+	max-width: 680px;
+	margin-right: auto;
+	/*width: min(80%, 680px);*/
+	margin-left: auto;
+}
+
+.post img {
+	width: 100%;
+	max-height: 600px;
+}
+
+
+/*-------------------------------------
+------ Страница "Сообщения": ---------
+-------------------------------------*/
+
+/*.messages {
+	padding-top: var(--margin-s);
+}
+
+.messages {
+	margin: 0 auto var(--margin-s);
+	padding: var(--margin-s);
+	border-radius: var(--border-radius);
+	background-color: var(--grey-lightest);
+}
+
+.messages:last-of-type {
+	margin-bottom: 0;
+}
+
+@media (min-width: 576px) {
+	.messages {
+		max-width: 800px;
+		padding: calc(var(--margin-s) * 1.4);
+	}
+}
+
+.messages__date {
+	font-size: var(--font-size-s);
+	color: var(--grey);
+}*/
+
+
+
+
+/*-------------------------------------
+------ Вспомогательные стили: ---------
+-------------------------------------*/
+
+/* Код для визуально-скрытых (vh = visually-hidden) элементов html и vhf = visually-hidden-focusable: */
+
+/*Более современный селектор: .visually-hidden:not(:focus):not(:active) - Это гарантирует, что если интерактивный элемент получит фокус, стили файла .visually-hidden класс будет отменён, а доступное для фокуса содержимое будет выставлено.*/
+
+.vh,
+.vhf:not(:focus):not(:focus-within) {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	white-space: nowrap;
+	border: 0;
+	overflow: hidden;
+	-webkit-appearance: none;
+	appearance: none;
+	clip: rect(0 0 0 0);
+	-webkit-clip-path: inset(100%);
+	clip-path: inset(100%);/*clip: rect(1px, 1px, 1px, 1px);*//*clip-path: inset(0px 0px 99.9% 99.9%);*/
+}/* Это код для визуально-скрытых (visually-hidden) элементов html */
+
+
+
+
+/* Ниже полное отключение анимаций на сайте если включена настройка prefers-reduced-motion: reduce: */
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::after,
+	*::before {
+		transition-duration: 0.01s !important;
+		/*transition: none !important;*/
+		/*animation: none !important;*/
+		animation-duration: 0.01s !important;
+		animation-iteration-count: 1 !important;
+		scroll-behavior: auto !important;
+	}
+}

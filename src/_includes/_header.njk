@@ -1,0 +1,40 @@
+<header class="header container">
+
+	<a class="header__brand" href="/" aria-current="page">Артём Плаксин</a>
+
+	<p class="header__text">Специалист по доступности и социальный деятель</p>
+
+	<div class="header__contacts">
+		<a class="header__link" href="tel:{{ _site.siteTel }}">{{ _site.siteTel }}</a>
+
+		<a class="header__link" href="mailto:{{ _site.siteEmail }}">{{ _site.siteEmail }}</a>
+	</div>
+
+	<nav class="header__nav">
+		<ul class="menu">
+			<li><a class="menu__link" href="/" {{ 'aria-current=page' if '/' == page.url }}>Главная</a></li>
+
+			<li><a class="menu__link {{ 'active' if '/services' in page.url }}" href="/#services" {{ 'aria-current=page' if '/services/' == page.url }}>Услуги</a></li>
+
+			{#<li><a class="menu__link {{ 'active' if '/services' in page.url }}" href="/services/" {{ 'aria-current=page' if '/services/' == page.url }}>Услуги</a></li>#}
+
+			<li><a class="menu__link {{ 'active' if '/blog' in page.url }}" href="/blog/" {{ 'aria-current=page' if '/blog/' == page.url }}>Статьи</a></li>
+
+			<li><a class="menu__link {{ 'active' if '/messages' in page.url }}" href="/#contacts" {{ 'aria-current=page' if '/messages/' == page.url }}>Контакты</a></li>
+
+			{#<li><a class="menu__link {{ 'active' if '/messages' in page.url }}" href="/messages/" {{ 'aria-current=page' if '/messages/' == page.url }}>Сообщения</a></li>#}
+
+			<!--{% for item in _menu.items %}
+				{% if item.url == page.url %}
+					{% set current = 'aria-current="page"' %}
+					{% else %}
+					{% set current = '' %}
+				{% endif %}
+			<li>
+				<a class="menu__link" href="{{ item.url }}" {{ current | safe }}>{{- item.text -}}</a>
+			</li>
+			{% endfor %}-->
+		</ul>
+	</nav>
+
+</header>
