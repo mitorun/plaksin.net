@@ -1,7 +1,0 @@
-User-agent: *
-Disallow: /tst/
-Disallow: /fls/
-Disallow: /page1.html
-Disallow: /404/
-Disallow: /404.html
-Sitemap: https://plaksin.net/sitemap.xml
